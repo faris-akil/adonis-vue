@@ -20,6 +20,10 @@ class UserController {
     return this.login(...arguments);
   };
 
+  async show(){
+    const users = await User.all();
+    return users;
+  }
 }
 
 module.exports = UserController
