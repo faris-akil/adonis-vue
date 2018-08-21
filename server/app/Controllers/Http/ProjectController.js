@@ -31,27 +31,6 @@ class ProjectController {
   }
 
   /**
-   * Create/save a new project.
-   * POST projects
-   */
-  async store ({ request, response }) {
-  }
-
-  /**
-   * Display a single project.
-   * GET projects/:id
-   */
-  async show ({ params, request, response, view }) {
-  }
-
-  /**
-   * Render a form to update an existing project.
-   * GET projects/:id/edit
-   */
-  async edit ({ params, request, response, view }) {
-  }
-
-  /**
    * Update project details.
    * PUT or PATCH projects/:id
    */
