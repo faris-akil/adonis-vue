@@ -6,8 +6,11 @@ export default {
   state: {
     registerEmail: 'hello YOOOO',
     registerPassword: 'world',
-    token: null,
     registerError: null,
+    loginEmail: 'hello',
+    loginPassword: 'world',
+    loginError: null,
+    token: null,
   },
   actions: {
     logout({ commit }){
@@ -24,6 +27,18 @@ export default {
         router.push('/');
       }).catch(() => {
         commit('setRegisterError', 'Invalid Registration Information');
+      });
+    },
+    login({ commit, state }){
+      commit('setLoginError', null);
+      return HTTP().post('auth/login', {
+        email: state.loginEmail,
+        password: state.loginPassword,
+      }).then(({ data }) => {
+        commit('setToken', data.token);
+        router.push('/');
+      }).catch(() => {
+        commit('setLoginError', 'An error has occured to log in to your account.');
       });
     },
   },
@@ -44,6 +59,15 @@ export default {
     },
     setRegisterPassword(state, password){
       state.registerPassword = password;
+    },
+    setLoginError(state, error){
+      state.loginError = error;
+    },
+    setLoginEmail(state, email){
+      state.loginEmail = email;
+    },
+    setLoginPassword(state, password){
+      state.loginPassword = password;
     },
   },
 };
