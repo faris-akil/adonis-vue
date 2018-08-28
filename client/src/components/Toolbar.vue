@@ -1,6 +1,6 @@
 <template lang="html">
   <v-toolbar color="blue" dark fixed>
-    <v-toolbar-title class="mr-4">Title</v-toolbar-title>
+    <v-toolbar-title class="mr-4">SoCloud Todo</v-toolbar-title>
     <v-toolbar-items>
       <v-btn flat v-if="isLoggedIn"><v-icon>playlist_add_check</v-icon>Projects</v-btn>
     </v-toolbar-items>
