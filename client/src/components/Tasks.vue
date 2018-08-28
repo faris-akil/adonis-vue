@@ -33,7 +33,6 @@ export default {
       'createTask',
       'deleteTask',
       'saveTask',
-      'toggleCompleted',
     ]),
     ...mapMutations('tasks', [
       'setNewTaskName',
