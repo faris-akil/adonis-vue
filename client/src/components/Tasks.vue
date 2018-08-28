@@ -3,7 +3,9 @@
     <div class="task mt-2" v-for="task in tasks" :key="task.id">
       <EditableRecord :isEditMode="task.isEditMode" :title="task.description" @onInput="setTaskDescription({ task, description: $event,})"
        @onEdit="setEditMode(task)" @onSave="saveTask(task)" @onDelete="deleteTask(task)"
-      />
+      > <v-icon @click="checkClicked(task)">{{ task.completed ? 'check_box' : 'check_box_outline_blank'}}</v-icon>
+    </EditableRecord>
+
     </div>
 
     <CreateRecord placeholder="I need to..." @onInput="setNewTaskName" :value="newTaskName" @create="createTask"/>
@@ -31,12 +33,18 @@ export default {
       'createTask',
       'deleteTask',
       'saveTask',
+      'toggleCompleted',
     ]),
     ...mapMutations('tasks', [
       'setNewTaskName',
       'setTaskDescription',
       'setEditMode',
+      'toggleCompleted',
     ]),
+    checkClicked(task) {
+      this.toggleCompleted(task);
+      this.saveTask(task);
+    },
   },
 };
 </script>
